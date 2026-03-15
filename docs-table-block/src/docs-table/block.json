@@ -60,7 +60,7 @@
     },
     "leftFontSize": {
       "type": "number",
-      "default": 16
+      "default": 17
     },
     "rightFontFamily": {
       "type": "string",
@@ -68,7 +68,7 @@
     },
     "rightFontSize": {
       "type": "number",
-      "default": 16
+      "default": 17
     }
   },
   "textdomain": "docs-table-block",

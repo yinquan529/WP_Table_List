@@ -18,9 +18,9 @@ $h_borders    = $attributes['showHorizontalBorders'] ?? true;
 $v_borders    = ! empty( $attributes['showVerticalBorders'] );
 
 $left_font_family  = $attributes['leftFontFamily'] ?? 'System Default';
-$left_font_size    = intval( $attributes['leftFontSize'] ?? 16 );
+$left_font_size    = intval( $attributes['leftFontSize'] ?? 17 );
 $right_font_family = $attributes['rightFontFamily'] ?? 'System Default';
-$right_font_size   = intval( $attributes['rightFontSize'] ?? 16 );
+$right_font_size   = intval( $attributes['rightFontSize'] ?? 17 );
 
 $left_ff_css  = ( ! $left_font_family || 'System Default' === $left_font_family ) ? 'inherit' : esc_attr( $left_font_family );
 $right_ff_css = ( ! $right_font_family || 'System Default' === $right_font_family ) ? 'inherit' : esc_attr( $right_font_family );
