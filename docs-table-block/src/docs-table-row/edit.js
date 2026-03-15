@@ -1,6 +1,11 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps } from '@wordpress/block-editor';
-import { useState, useCallback } from '@wordpress/element';
+import {
+	useState,
+	useCallback,
+	useRef,
+	useEffect,
+} from '@wordpress/element';
 import { Button } from '@wordpress/components';
 import { marked } from 'marked';
 
@@ -9,13 +14,37 @@ marked.setOptions( {
 	gfm: true,
 } );
 
-export default function Edit( { attributes, setAttributes } ) {
+export default function Edit( { attributes, setAttributes, context } ) {
 	const { label, content, contentHtml } = attributes;
+	const leftColumnWidth = context[ 'docs-table/leftColumnWidth' ] ?? 25;
 	const [ isPreview, setIsPreview ] = useState( false );
+	const [ editorWidth, setEditorWidth ] = useState( null );
+	const contentCellRef = useRef( null );
 
 	const blockProps = useBlockProps( {
 		className: 'docs-table-row',
 	} );
+
+	// Measure the content cell and size the editor to fill it.
+	useEffect( () => {
+		const cell = contentCellRef.current;
+		if ( ! cell ) {
+			return;
+		}
+
+		const measure = () => {
+			const w = cell.getBoundingClientRect().width;
+			if ( w > 0 ) {
+				setEditorWidth( w );
+			}
+		};
+
+		measure();
+
+		const observer = new ResizeObserver( measure );
+		observer.observe( cell );
+		return () => observer.disconnect();
+	}, [ leftColumnWidth ] );
 
 	const handleContentChange = useCallback(
 		( e ) => {
@@ -25,6 +54,10 @@ export default function Edit( { attributes, setAttributes } ) {
 		},
 		[ setAttributes ]
 	);
+
+	const editorStyle = editorWidth
+		? { width: `${ editorWidth }px`, maxWidth: `${ editorWidth }px` }
+		: {};
 
 	return (
 		<tr { ...blockProps }>
@@ -39,8 +72,11 @@ export default function Edit( { attributes, setAttributes } ) {
 					placeholder={ __( 'Term name…', 'docs-table-block' ) }
 				/>
 			</td>
-			<td className="docs-table-cell docs-table-cell--content docs-table-row-content">
-				<div className="dtb-markdown-editor">
+			<td
+				ref={ contentCellRef }
+				className="docs-table-cell docs-table-cell--content docs-table-row-content"
+			>
+				<div className="dtb-markdown-editor" style={ editorStyle }>
 					<div className="dtb-markdown-tabs">
 						<Button
 							variant={ ! isPreview ? 'primary' : 'secondary' }
@@ -72,7 +108,9 @@ export default function Edit( { attributes, setAttributes } ) {
 						<div
 							className="dtb-markdown-preview"
 							dangerouslySetInnerHTML={ {
-								__html: contentHtml || '<p style="color:#999">Nothing to preview</p>',
+								__html:
+									contentHtml ||
+									'<p style="color:#999">Nothing to preview</p>',
 							} }
 						/>
 					) }

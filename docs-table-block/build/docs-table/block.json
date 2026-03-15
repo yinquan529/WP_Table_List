@@ -13,6 +13,9 @@
     "docs",
     "reference"
   ],
+  "providesContext": {
+    "docs-table/leftColumnWidth": "leftColumnWidth"
+  },
   "supports": {
     "html": false,
     "anchor": true,

@@ -8,6 +8,9 @@
   "icon": "editor-table",
   "description": "A documentation-style two-column table with rich content support.",
   "keywords": [ "table", "documentation", "docs", "reference" ],
+  "providesContext": {
+    "docs-table/leftColumnWidth": "leftColumnWidth"
+  },
   "supports": {
     "html": false,
     "anchor": true,

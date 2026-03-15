@@ -8,6 +8,7 @@
   "icon": "table-row-after",
   "description": "A single row in a documentation table.",
   "parent": [ "docs-table/table" ],
+  "usesContext": [ "docs-table/leftColumnWidth" ],
   "supports": {
     "html": false,
     "reusable": false
