@@ -1,5 +1,10 @@
 /* Editor-only styles for the docs-table parent block */
 .wp-block-docs-table-table {
+	/* Expand beyond the editor's default content width so the
+	   two-column table (and its Markdown textarea) has room. */
+	max-width: var(--wp--style--global--wide-size, 1080px) !important;
+	width: 100% !important;
+
 	/* Make the table block appender less intrusive */
 	.block-list-appender {
 		margin: 0;
