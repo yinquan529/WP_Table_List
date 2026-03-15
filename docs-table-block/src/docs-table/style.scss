@@ -79,7 +79,8 @@
 .docs-table-cell--label {
 	font-weight: 600;
 	color: #1a1a1a;
-	font-size: 0.95em;
+	font-family: var(--dtb-left-font-family, inherit);
+	font-size: var(--dtb-left-font-size, 16px);
 	line-height: 1.5;
 }
 
@@ -87,10 +88,22 @@
 	font-weight: 600;
 }
 
+/* Header row inherits font families from columns */
+.docs-table-header-row {
+	th.docs-table-cell--label {
+		font-family: var(--dtb-left-font-family, inherit);
+	}
+
+	th.docs-table-cell--content {
+		font-family: var(--dtb-right-font-family, inherit);
+	}
+}
+
 /* Right column content spacing */
 .docs-table-row-content {
 	color: #444;
-	font-size: 0.95em;
+	font-family: var(--dtb-right-font-family, inherit);
+	font-size: var(--dtb-right-font-size, 16px);
 	line-height: 1.6;
 
 	p {

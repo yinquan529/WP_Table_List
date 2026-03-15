@@ -17,6 +17,14 @@ $zebra        = ! empty( $attributes['zebraStriping'] );
 $h_borders    = $attributes['showHorizontalBorders'] ?? true;
 $v_borders    = ! empty( $attributes['showVerticalBorders'] );
 
+$left_font_family  = $attributes['leftFontFamily'] ?? 'System Default';
+$left_font_size    = intval( $attributes['leftFontSize'] ?? 16 );
+$right_font_family = $attributes['rightFontFamily'] ?? 'System Default';
+$right_font_size   = intval( $attributes['rightFontSize'] ?? 16 );
+
+$left_ff_css  = ( ! $left_font_family || 'System Default' === $left_font_family ) ? 'inherit' : esc_attr( $left_font_family );
+$right_ff_css = ( ! $right_font_family || 'System Default' === $right_font_family ) ? 'inherit' : esc_attr( $right_font_family );
+
 $classes = 'docs-table-block';
 if ( $zebra ) {
 	$classes .= ' has-zebra-striping';
@@ -31,12 +39,16 @@ if ( ! $h_borders ) {
 $wrapper_attributes = get_block_wrapper_attributes( array( 'class' => $classes ) );
 
 $table_style = sprintf(
-	'--dtb-left-width:%d%%;--dtb-right-width:%d%%;--dtb-border-color:%s;--dtb-cell-padding:%dpx;--dtb-border-style:%s',
+	'--dtb-left-width:%d%%;--dtb-right-width:%d%%;--dtb-border-color:%s;--dtb-cell-padding:%dpx;--dtb-border-style:%s;--dtb-left-font-family:%s;--dtb-left-font-size:%dpx;--dtb-right-font-family:%s;--dtb-right-font-size:%dpx',
 	$left_width,
 	100 - $left_width,
 	$border_color,
 	$cell_padding,
-	$border_style
+	$border_style,
+	$left_ff_css,
+	$left_font_size,
+	$right_ff_css,
+	$right_font_size
 );
 ?>
 <div <?php echo $wrapper_attributes; ?>>

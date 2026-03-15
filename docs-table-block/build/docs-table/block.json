@@ -61,6 +61,22 @@
     "zebraStriping": {
       "type": "boolean",
       "default": false
+    },
+    "leftFontFamily": {
+      "type": "string",
+      "default": "System Default"
+    },
+    "leftFontSize": {
+      "type": "number",
+      "default": 16
+    },
+    "rightFontFamily": {
+      "type": "string",
+      "default": "System Default"
+    },
+    "rightFontSize": {
+      "type": "number",
+      "default": 16
     }
   },
   "textdomain": "docs-table-block",

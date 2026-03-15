@@ -20,6 +20,33 @@ const TEMPLATE = [
 	[ 'docs-table/row', { label: 'Another Term' } ],
 ];
 
+const FONT_OPTIONS = [
+	{ label: 'System Default', value: 'System Default' },
+	{ label: 'Arial', value: 'Arial, Helvetica, sans-serif' },
+	{ label: 'Georgia', value: 'Georgia, "Times New Roman", serif' },
+	{ label: 'Times New Roman', value: '"Times New Roman", Times, serif' },
+	{ label: 'Verdana', value: 'Verdana, Geneva, sans-serif' },
+	{ label: 'Trebuchet MS', value: '"Trebuchet MS", Helvetica, sans-serif' },
+	{ label: 'Courier New', value: '"Courier New", Courier, monospace' },
+	{ label: 'Tahoma', value: 'Tahoma, Verdana, sans-serif' },
+	{ label: 'Palatino', value: '"Palatino Linotype", "Book Antiqua", Palatino, serif' },
+	{ label: 'Garamond', value: 'Garamond, Baskerville, serif' },
+	{ label: 'Segoe UI', value: '"Segoe UI", Tahoma, Geneva, sans-serif' },
+	{ label: 'Roboto', value: 'Roboto, "Helvetica Neue", Arial, sans-serif' },
+	{ label: 'Open Sans', value: '"Open Sans", "Helvetica Neue", sans-serif' },
+	{ label: 'Lato', value: 'Lato, "Helvetica Neue", Arial, sans-serif' },
+	{ label: 'Merriweather', value: 'Merriweather, Georgia, serif' },
+	{ label: 'Playfair Display', value: '"Playfair Display", Georgia, serif' },
+	{ label: 'Source Code Pro', value: '"Source Code Pro", Menlo, monospace' },
+];
+
+function fontFamilyValue( family ) {
+	if ( ! family || family === 'System Default' ) {
+		return 'inherit';
+	}
+	return family;
+}
+
 export default function Edit( { attributes, setAttributes } ) {
 	const {
 		headerLeft,
@@ -32,6 +59,10 @@ export default function Edit( { attributes, setAttributes } ) {
 		showVerticalBorders,
 		cellPadding,
 		zebraStriping,
+		leftFontFamily,
+		leftFontSize,
+		rightFontFamily,
+		rightFontSize,
 	} = attributes;
 
 	const classes = [
@@ -51,6 +82,10 @@ export default function Edit( { attributes, setAttributes } ) {
 		'--dtb-border-color': borderColor,
 		'--dtb-cell-padding': `${ cellPadding }px`,
 		'--dtb-border-style': borderStyle,
+		'--dtb-left-font-family': fontFamilyValue( leftFontFamily ),
+		'--dtb-left-font-size': `${ leftFontSize }px`,
+		'--dtb-right-font-family': fontFamilyValue( rightFontFamily ),
+		'--dtb-right-font-size': `${ rightFontSize }px`,
 	};
 
 	const innerBlocksProps = useInnerBlocksProps(
@@ -126,6 +161,58 @@ export default function Edit( { attributes, setAttributes } ) {
 						min={ 4 }
 						max={ 32 }
 						step={ 2 }
+					/>
+				</PanelBody>
+				<PanelBody
+					title={ __(
+						'Left Column Typography',
+						'docs-table-block'
+					) }
+					initialOpen={ false }
+				>
+					<SelectControl
+						label={ __( 'Font family', 'docs-table-block' ) }
+						value={ leftFontFamily }
+						options={ FONT_OPTIONS }
+						onChange={ ( val ) =>
+							setAttributes( { leftFontFamily: val } )
+						}
+					/>
+					<RangeControl
+						label={ __( 'Font size (px)', 'docs-table-block' ) }
+						value={ leftFontSize }
+						onChange={ ( val ) =>
+							setAttributes( { leftFontSize: val } )
+						}
+						min={ 10 }
+						max={ 48 }
+						step={ 1 }
+					/>
+				</PanelBody>
+				<PanelBody
+					title={ __(
+						'Right Column Typography',
+						'docs-table-block'
+					) }
+					initialOpen={ false }
+				>
+					<SelectControl
+						label={ __( 'Font family', 'docs-table-block' ) }
+						value={ rightFontFamily }
+						options={ FONT_OPTIONS }
+						onChange={ ( val ) =>
+							setAttributes( { rightFontFamily: val } )
+						}
+					/>
+					<RangeControl
+						label={ __( 'Font size (px)', 'docs-table-block' ) }
+						value={ rightFontSize }
+						onChange={ ( val ) =>
+							setAttributes( { rightFontSize: val } )
+						}
+						min={ 10 }
+						max={ 48 }
+						step={ 1 }
 					/>
 				</PanelBody>
 				<PanelBody
