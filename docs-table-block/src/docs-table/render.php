@@ -7,10 +7,10 @@
  */
 
 $show_header  = ! empty( $attributes['showHeader'] );
-$header_left  = esc_html( $attributes['headerLeft'] ?? 'Object' );
+$header_left  = esc_html( $attributes['headerLeft'] ?? 'object' );
 $header_right = esc_html( $attributes['headerRight'] ?? 'Explanation' );
 $left_width   = intval( $attributes['leftColumnWidth'] ?? 25 );
-$border_color = esc_attr( $attributes['borderColor'] ?? '#e0e0e0' );
+$border_color = esc_attr( $attributes['borderColor'] ?? '#ccc' );
 $border_style = esc_attr( $attributes['borderStyle'] ?? 'solid' );
 $cell_padding = intval( $attributes['cellPadding'] ?? 16 );
 $zebra        = ! empty( $attributes['zebraStriping'] );
