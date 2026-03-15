@@ -309,27 +309,23 @@ export default function Edit( { attributes, setAttributes } ) {
 			</InspectorControls>
 
 			<div { ...blockProps }>
-				<table className="docs-table" style={ tableStyle }>
+				<div className="docs-table" style={ tableStyle }>
 					{ showHeader && (
-						<thead>
-							<tr className="docs-table-header-row">
-								<th
-									className="docs-table-cell docs-table-cell--label"
-									scope="col"
-								>
-									{ headerLeft }
-								</th>
-								<th
-									className="docs-table-cell docs-table-cell--content"
-									scope="col"
-								>
-									{ headerRight }
-								</th>
-							</tr>
-						</thead>
+						<div className="docs-table-header-row">
+							<div
+								className="docs-table-cell docs-table-cell--label"
+							>
+								{ headerLeft }
+							</div>
+							<div
+								className="docs-table-cell docs-table-cell--content"
+							>
+								{ headerRight }
+							</div>
+						</div>
 					) }
-					<tbody { ...innerBlocksProps } />
-				</table>
+					<div { ...innerBlocksProps } />
+				</div>
 			</div>
 		</>
 	);

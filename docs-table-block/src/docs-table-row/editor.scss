@@ -1,11 +1,13 @@
 /* Editor-only styles for docs-table-row */
 .wp-block-docs-table-row {
-	display: table-row;
+	/* Two-column grid matching the parent's column widths */
+	display: grid !important;
+	grid-template-columns: var(--dtb-left-width, 25%) 1fr;
+	align-items: start;
 
 	/* Label input */
 	.docs-table-cell--label {
-		display: table-cell;
-		vertical-align: top;
+		min-width: 0;
 	}
 
 	.dtb-label-input {
@@ -34,13 +36,11 @@
 
 	/* Content cell */
 	.docs-table-cell--content {
-		display: table-cell;
-		vertical-align: top;
+		min-width: 0;
 	}
 
 	/* Markdown editor */
 	.dtb-markdown-editor {
-		display: block;
 		width: 100%;
 		min-width: 0;
 		box-sizing: border-box;
@@ -60,10 +60,9 @@
 
 	.dtb-markdown-textarea {
 		display: block;
-		width: 100% !important;
+		width: 100%;
 		min-width: 0;
 		min-height: 80px;
-		max-width: 100%;
 		box-sizing: border-box;
 		border: 1px solid #ddd;
 		border-radius: 3px;
