@@ -10,6 +10,9 @@
   "parent": [
     "docs-table/table"
   ],
+  "usesContext": [
+    "docs-table/leftColumnWidth"
+  ],
   "supports": {
     "html": false,
     "reusable": false
