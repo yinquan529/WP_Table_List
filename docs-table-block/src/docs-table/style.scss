@@ -15,7 +15,8 @@
 
 /* Header row */
 .docs-table-header-row {
-	border-bottom: 2px solid var(--dtb-border-color, #e0e0e0);
+	border-bottom: 2px var(--dtb-border-style, solid)
+		var(--dtb-border-color, #e0e0e0);
 
 	th {
 		text-align: left;
@@ -39,12 +40,33 @@
 	width: var(--dtb-right-width, 75%);
 }
 
-/* Body rows */
+/* Body rows — horizontal borders */
 .docs-table-row {
-	border-bottom: 1px solid var(--dtb-border-color, #e0e0e0);
+	border-bottom: 1px var(--dtb-border-style, solid)
+		var(--dtb-border-color, #e0e0e0);
+}
 
-	&:last-child {
-		border-bottom: 1px solid var(--dtb-border-color, #e0e0e0);
+/* Disable horizontal borders */
+.no-horizontal-borders {
+	.docs-table-row {
+		border-bottom: none;
+	}
+
+	.docs-table-header-row {
+		border-bottom: none;
+	}
+}
+
+/* Vertical borders */
+.has-vertical-borders {
+	.docs-table-cell--label {
+		border-right: 1px var(--dtb-border-style, solid)
+			var(--dtb-border-color, #e0e0e0);
+	}
+
+	.docs-table-header-row th.docs-table-cell--label {
+		border-right: 1px var(--dtb-border-style, solid)
+			var(--dtb-border-color, #e0e0e0);
 	}
 }
 
@@ -71,7 +93,7 @@
 	font-size: 0.95em;
 	line-height: 1.6;
 
-	> p {
+	p {
 		margin: 0 0 0.6em;
 
 		&:last-child {
@@ -79,8 +101,8 @@
 		}
 	}
 
-	> ul,
-	> ol {
+	ul,
+	ol {
 		margin: 0.4em 0 0.6em;
 		padding-left: 1.4em;
 
@@ -89,19 +111,58 @@
 		}
 	}
 
-	> ul li,
-	> ol li {
+	li {
 		margin-bottom: 0.25em;
 		line-height: 1.5;
 	}
 
-	/* Nested lists */
 	ul ul,
 	ol ol,
 	ul ol,
 	ol ul {
 		margin-top: 0.2em;
 		margin-bottom: 0.2em;
+	}
+
+	code {
+		background: #f5f5f5;
+		padding: 0.15em 0.4em;
+		border-radius: 3px;
+		font-size: 0.9em;
+	}
+
+	pre {
+		background: #f5f5f5;
+		padding: 0.8em 1em;
+		border-radius: 4px;
+		overflow-x: auto;
+
+		code {
+			background: none;
+			padding: 0;
+		}
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin: 0.6em 0 0.3em;
+		font-weight: 600;
+		line-height: 1.3;
+
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+
+	blockquote {
+		margin: 0.4em 0;
+		padding-left: 1em;
+		border-left: 3px solid var(--dtb-border-color, #e0e0e0);
+		color: #666;
 	}
 }
 
@@ -134,6 +195,7 @@
 		padding-bottom: 4px;
 		font-weight: 700;
 		font-size: 1em;
+		border-right: none !important;
 	}
 
 	.docs-table-cell--content {
