@@ -1,0 +1,142 @@
+/* Frontend + Editor shared styles for docs-table parent */
+.docs-table-block {
+	margin: 1.5em 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.docs-table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	border: none;
+	table-layout: fixed;
+}
+
+/* Header row */
+.docs-table-header-row {
+	border-bottom: 2px solid var(--dtb-border-color, #e0e0e0);
+
+	th {
+		text-align: left;
+		font-weight: 700;
+		font-size: 0.85em;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: #333;
+		padding: var(--dtb-cell-padding, 16px);
+		padding-top: 8px;
+		vertical-align: bottom;
+	}
+}
+
+/* Column widths via CSS custom properties */
+.docs-table-cell--label {
+	width: var(--dtb-left-width, 25%);
+}
+
+.docs-table-cell--content {
+	width: var(--dtb-right-width, 75%);
+}
+
+/* Body rows */
+.docs-table-row {
+	border-bottom: 1px solid var(--dtb-border-color, #e0e0e0);
+
+	&:last-child {
+		border-bottom: 1px solid var(--dtb-border-color, #e0e0e0);
+	}
+}
+
+.docs-table-cell {
+	padding: var(--dtb-cell-padding, 16px);
+	vertical-align: top;
+	border: none;
+}
+
+.docs-table-cell--label {
+	font-weight: 600;
+	color: #1a1a1a;
+	font-size: 0.95em;
+	line-height: 1.5;
+}
+
+.docs-table-label {
+	font-weight: 600;
+}
+
+/* Right column content spacing */
+.docs-table-row-content {
+	color: #444;
+	font-size: 0.95em;
+	line-height: 1.6;
+
+	> p {
+		margin: 0 0 0.6em;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	> ul,
+	> ol {
+		margin: 0.4em 0 0.6em;
+		padding-left: 1.4em;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	> ul li,
+	> ol li {
+		margin-bottom: 0.25em;
+		line-height: 1.5;
+	}
+
+	/* Nested lists */
+	ul ul,
+	ol ol,
+	ul ol,
+	ol ul {
+		margin-top: 0.2em;
+		margin-bottom: 0.2em;
+	}
+}
+
+/* Zebra striping */
+.has-zebra-striping .docs-table-body .docs-table-row:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 600px) {
+	.docs-table,
+	.docs-table thead,
+	.docs-table tbody,
+	.docs-table tr,
+	.docs-table th,
+	.docs-table td {
+		display: block;
+		width: 100% !important;
+	}
+
+	.docs-table thead {
+		display: none;
+	}
+
+	.docs-table-row {
+		padding: 12px 0;
+	}
+
+	.docs-table-cell--label {
+		padding-bottom: 4px;
+		font-weight: 700;
+		font-size: 1em;
+	}
+
+	.docs-table-cell--content {
+		padding-top: 0;
+	}
+}

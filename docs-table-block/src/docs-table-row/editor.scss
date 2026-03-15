@@ -1,0 +1,41 @@
+/* Editor-only styles for docs-table-row */
+.wp-block-docs-table-row {
+	/* Ensure the row is rendered as a table row in the editor */
+	display: table-row;
+
+	/* Style the label cell RichText */
+	.docs-table-cell--label {
+		display: table-cell;
+		vertical-align: top;
+		cursor: text;
+	}
+
+	/* Content cell with InnerBlocks */
+	.docs-table-cell--content {
+		display: table-cell;
+		vertical-align: top;
+
+		/* Tighten up inner block spacing in the editor */
+		> .block-editor-inner-blocks {
+			width: 100%;
+		}
+
+		.block-editor-block-list__layout {
+			> .wp-block {
+				margin-top: 0;
+				margin-bottom: 0.4em;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+
+	/* Selected state */
+	&.is-selected,
+	&.has-child-selected {
+		outline: 1px dashed rgba(0, 124, 186, 0.4);
+		outline-offset: -1px;
+	}
+}
