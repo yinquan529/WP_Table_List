@@ -311,7 +311,13 @@ export default function Edit( { attributes, setAttributes } ) {
 			<div { ...blockProps }>
 				<div className="docs-table" style={ tableStyle }>
 					{ showHeader && (
-						<div className="docs-table-header-row">
+						<div
+							className="docs-table-header-row"
+							style={ {
+								display: 'grid',
+								gridTemplateColumns: `${ leftColumnWidth }% 1fr`,
+							} }
+						>
 							<div
 								className="docs-table-cell docs-table-cell--label"
 							>
