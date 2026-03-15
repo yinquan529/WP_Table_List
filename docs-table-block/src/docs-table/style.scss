@@ -1,7 +1,7 @@
 /* Frontend + Editor shared styles for docs-table parent */
 .docs-table-block {
 	margin: 1.5em 0;
-	font-family: Georgia, "Times New Roman", Times, serif;
+	font-family: serif;
 }
 
 .docs-table {
@@ -74,11 +74,11 @@
 }
 
 .docs-table-cell--label {
-	font-weight: 600;
-	color: #1a1a1a;
+	font-weight: 700;
+	color: #333;
 	font-family: var(--dtb-left-font-family, inherit);
-	font-size: var(--dtb-left-font-size, 16px);
-	line-height: 1.5;
+	font-size: var(--dtb-left-font-size, 17px);
+	line-height: 24px;
 }
 
 .docs-table-label {
@@ -98,10 +98,11 @@
 
 /* Right column content spacing */
 .docs-table-row-content {
-	color: #444;
+	color: #333;
+	font-weight: 300;
 	font-family: var(--dtb-right-font-family, inherit);
-	font-size: var(--dtb-right-font-size, 16px);
-	line-height: 1.6;
+	font-size: var(--dtb-right-font-size, 17px);
+	line-height: 24px;
 
 	p {
 		margin: 0 0 0.6em;
