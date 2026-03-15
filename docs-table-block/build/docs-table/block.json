@@ -1,0 +1,58 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "docs-table/table",
+  "version": "1.0.0",
+  "title": "Docs Table",
+  "category": "text",
+  "icon": "editor-table",
+  "description": "A documentation-style two-column table with rich content support.",
+  "keywords": [
+    "table",
+    "documentation",
+    "docs",
+    "reference"
+  ],
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "attributes": {
+    "headerLeft": {
+      "type": "string",
+      "default": "Object"
+    },
+    "headerRight": {
+      "type": "string",
+      "default": "Explanation"
+    },
+    "showHeader": {
+      "type": "boolean",
+      "default": true
+    },
+    "leftColumnWidth": {
+      "type": "number",
+      "default": 25
+    },
+    "borderColor": {
+      "type": "string",
+      "default": "#e0e0e0"
+    },
+    "cellPadding": {
+      "type": "number",
+      "default": 16
+    },
+    "zebraStriping": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "textdomain": "docs-table-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

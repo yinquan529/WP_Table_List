@@ -17,39 +17,28 @@ A WordPress Gutenberg block plugin that renders clean, documentation-style two-c
 
 - WordPress 6.4+
 - PHP 7.4+
-- Node.js 18+ (for building)
 
 ## Installation
 
-1. Clone or copy the `docs-table-block/` directory into `wp-content/plugins/`:
+1. Copy the `docs-table-block/` directory into `wp-content/plugins/`:
 
    ```bash
    cp -r docs-table-block /path/to/wordpress/wp-content/plugins/
    ```
 
-2. Install dependencies and build:
+2. Activate the plugin in **WP Admin → Plugins → Docs Table Block**.
 
-   ```bash
-   cd /path/to/wordpress/wp-content/plugins/docs-table-block
-   npm install
-   npm run build
-   ```
-
-3. Activate the plugin in **WP Admin → Plugins → Docs Table Block**.
+No build step required — the plugin ships with pre-built assets in the `build/` directory.
 
 ## Development
 
-Start the development watcher for live rebuilds:
+To modify the source files and rebuild:
 
 ```bash
 cd docs-table-block
-npm run start
-```
-
-Build for production:
-
-```bash
-npm run build
+npm install
+npm run start   # watch mode
+npm run build   # production build
 ```
 
 ## Usage
