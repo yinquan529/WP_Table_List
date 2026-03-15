@@ -12,8 +12,9 @@ $header_right = esc_html( $attributes['headerRight'] ?? 'Explanation' );
 $left_width   = intval( $attributes['leftColumnWidth'] ?? 25 );
 $border_color = esc_attr( $attributes['borderColor'] ?? '#ccc' );
 $border_style = esc_attr( $attributes['borderStyle'] ?? 'solid' );
-$cell_padding = intval( $attributes['cellPadding'] ?? 16 );
-$zebra        = ! empty( $attributes['zebraStriping'] );
+$cell_padding    = intval( $attributes['cellPadding'] ?? 16 );
+$header_font_size = intval( $attributes['headerFontSize'] ?? 15 );
+$zebra           = ! empty( $attributes['zebraStriping'] );
 $h_borders    = $attributes['showHorizontalBorders'] ?? true;
 $v_borders    = ! empty( $attributes['showVerticalBorders'] );
 
@@ -44,7 +45,7 @@ if ( ! $h_borders ) {
 $wrapper_attributes = get_block_wrapper_attributes( array( 'class' => $classes ) );
 
 $table_style = sprintf(
-	'--dtb-left-width:%d%%;--dtb-right-width:%d%%;--dtb-border-color:%s;--dtb-cell-padding:%dpx;--dtb-border-style:%s;--dtb-left-font-family:%s;--dtb-left-font-size:%dpx;--dtb-right-font-family:%s;--dtb-right-font-size:%dpx',
+	'--dtb-left-width:%d%%;--dtb-right-width:%d%%;--dtb-border-color:%s;--dtb-cell-padding:%dpx;--dtb-border-style:%s;--dtb-left-font-family:%s;--dtb-left-font-size:%dpx;--dtb-right-font-family:%s;--dtb-right-font-size:%dpx;--dtb-header-font-size:%dpx',
 	$left_width,
 	100 - $left_width,
 	$border_color,
@@ -53,7 +54,8 @@ $table_style = sprintf(
 	$left_ff_css,
 	$left_font_size,
 	$right_ff_css,
-	$right_font_size
+	$right_font_size,
+	$header_font_size
 );
 ?>
 <div <?php echo $wrapper_attributes; ?>>

@@ -69,6 +69,7 @@ export default function Edit( { attributes, setAttributes } ) {
 		headerLeft,
 		headerRight,
 		showHeader,
+		headerFontSize,
 		leftColumnWidth,
 		borderColor,
 		borderStyle,
@@ -103,6 +104,7 @@ export default function Edit( { attributes, setAttributes } ) {
 		'--dtb-left-font-size': `${ leftFontSize }px`,
 		'--dtb-right-font-family': fontFamilyValue( rightFontFamily ),
 		'--dtb-right-font-size': `${ rightFontSize }px`,
+		'--dtb-header-font-size': `${ headerFontSize }px`,
 	};
 
 	const innerBlocksProps = useInnerBlocksProps(
@@ -148,6 +150,19 @@ export default function Edit( { attributes, setAttributes } ) {
 								onChange={ ( val ) =>
 									setAttributes( { headerRight: val } )
 								}
+							/>
+							<RangeControl
+								label={ __(
+									'Header font size (px)',
+									'docs-table-block'
+								) }
+								value={ headerFontSize }
+								onChange={ ( val ) =>
+									setAttributes( { headerFontSize: val } )
+								}
+								min={ 10 }
+								max={ 36 }
+								step={ 1 }
 							/>
 						</>
 					) }
