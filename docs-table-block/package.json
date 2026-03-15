@@ -12,6 +12,9 @@
     "lint:js": "wp-scripts lint-js",
     "lint:css": "wp-scripts lint-style"
   },
+  "dependencies": {
+    "marked": "^15.0.0"
+  },
   "devDependencies": {
     "@wordpress/scripts": "^30.0.0"
   }

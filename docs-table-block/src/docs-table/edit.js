@@ -9,6 +9,7 @@ import {
 	TextControl,
 	ToggleControl,
 	RangeControl,
+	SelectControl,
 	ColorPicker,
 } from '@wordpress/components';
 
@@ -26,19 +27,30 @@ export default function Edit( { attributes, setAttributes } ) {
 		showHeader,
 		leftColumnWidth,
 		borderColor,
+		borderStyle,
+		showHorizontalBorders,
+		showVerticalBorders,
 		cellPadding,
 		zebraStriping,
 	} = attributes;
 
-	const blockProps = useBlockProps( {
-		className: `docs-table-block${ zebraStriping ? ' has-zebra-striping' : '' }`,
-	} );
+	const classes = [
+		'docs-table-block',
+		zebraStriping && 'has-zebra-striping',
+		showVerticalBorders && 'has-vertical-borders',
+		! showHorizontalBorders && 'no-horizontal-borders',
+	]
+		.filter( Boolean )
+		.join( ' ' );
+
+	const blockProps = useBlockProps( { className: classes } );
 
 	const tableStyle = {
 		'--dtb-left-width': `${ leftColumnWidth }%`,
 		'--dtb-right-width': `${ 100 - leftColumnWidth }%`,
 		'--dtb-border-color': borderColor,
 		'--dtb-cell-padding': `${ cellPadding }px`,
+		'--dtb-border-style': borderStyle,
 	};
 
 	const innerBlocksProps = useInnerBlocksProps(
@@ -46,9 +58,6 @@ export default function Edit( { attributes, setAttributes } ) {
 		{
 			allowedBlocks: ALLOWED_BLOCKS,
 			template: TEMPLATE,
-			renderAppender: useInnerBlocksProps.ButtonBlockAppender
-				? undefined
-				: undefined,
 		}
 	);
 
@@ -120,6 +129,50 @@ export default function Edit( { attributes, setAttributes } ) {
 					/>
 				</PanelBody>
 				<PanelBody
+					title={ __( 'Borders', 'docs-table-block' ) }
+					initialOpen={ false }
+				>
+					<ToggleControl
+						label={ __(
+							'Horizontal borders',
+							'docs-table-block'
+						) }
+						checked={ showHorizontalBorders }
+						onChange={ ( val ) =>
+							setAttributes( { showHorizontalBorders: val } )
+						}
+					/>
+					<ToggleControl
+						label={ __( 'Vertical borders', 'docs-table-block' ) }
+						checked={ showVerticalBorders }
+						onChange={ ( val ) =>
+							setAttributes( { showVerticalBorders: val } )
+						}
+					/>
+					<SelectControl
+						label={ __( 'Border style', 'docs-table-block' ) }
+						value={ borderStyle }
+						options={ [
+							{ label: 'Solid', value: 'solid' },
+							{ label: 'Dashed', value: 'dashed' },
+							{ label: 'Dotted', value: 'dotted' },
+						] }
+						onChange={ ( val ) =>
+							setAttributes( { borderStyle: val } )
+						}
+					/>
+					<p className="components-base-control__label">
+						{ __( 'Border color', 'docs-table-block' ) }
+					</p>
+					<ColorPicker
+						color={ borderColor }
+						onChange={ ( val ) =>
+							setAttributes( { borderColor: val } )
+						}
+						enableAlpha={ false }
+					/>
+				</PanelBody>
+				<PanelBody
 					title={ __( 'Styling', 'docs-table-block' ) }
 					initialOpen={ false }
 				>
@@ -132,16 +185,6 @@ export default function Edit( { attributes, setAttributes } ) {
 						onChange={ ( val ) =>
 							setAttributes( { zebraStriping: val } )
 						}
-					/>
-					<p className="components-base-control__label">
-						{ __( 'Border color', 'docs-table-block' ) }
-					</p>
-					<ColorPicker
-						color={ borderColor }
-						onChange={ ( val ) =>
-							setAttributes( { borderColor: val } )
-						}
-						enableAlpha={ false }
 					/>
 				</PanelBody>
 			</InspectorControls>

@@ -18,10 +18,19 @@
     "label": {
       "type": "string",
       "default": ""
+    },
+    "content": {
+      "type": "string",
+      "default": ""
+    },
+    "contentHtml": {
+      "type": "string",
+      "default": ""
     }
   },
   "textdomain": "docs-table-block",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css"
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
 }

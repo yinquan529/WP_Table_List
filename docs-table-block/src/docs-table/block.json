@@ -34,6 +34,18 @@
       "type": "string",
       "default": "#e0e0e0"
     },
+    "borderStyle": {
+      "type": "string",
+      "default": "solid"
+    },
+    "showHorizontalBorders": {
+      "type": "boolean",
+      "default": true
+    },
+    "showVerticalBorders": {
+      "type": "boolean",
+      "default": false
+    },
     "cellPadding": {
       "type": "number",
       "default": 16
@@ -46,5 +58,6 @@
   "textdomain": "docs-table-block",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css"
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
 }

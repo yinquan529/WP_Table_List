@@ -1,34 +1,137 @@
 /* Editor-only styles for docs-table-row */
 .wp-block-docs-table-row {
-	/* Ensure the row is rendered as a table row in the editor */
 	display: table-row;
 
-	/* Style the label cell RichText */
+	/* Label input */
 	.docs-table-cell--label {
 		display: table-cell;
 		vertical-align: top;
-		cursor: text;
 	}
 
-	/* Content cell with InnerBlocks */
+	.dtb-label-input {
+		width: 100%;
+		border: 1px solid #ddd;
+		border-radius: 3px;
+		padding: 8px 10px;
+		font-size: 14px;
+		font-weight: 600;
+		color: #1a1a1a;
+		background: #fff;
+		outline: none;
+		font-family: inherit;
+
+		&:focus {
+			border-color: #007cba;
+			box-shadow: 0 0 0 1px #007cba;
+		}
+
+		&::placeholder {
+			color: #999;
+			font-weight: 400;
+		}
+	}
+
+	/* Content cell */
 	.docs-table-cell--content {
 		display: table-cell;
 		vertical-align: top;
+	}
 
-		/* Tighten up inner block spacing in the editor */
-		> .block-editor-inner-blocks {
-			width: 100%;
+	/* Markdown editor */
+	.dtb-markdown-editor {
+		width: 100%;
+	}
+
+	.dtb-markdown-tabs {
+		display: flex;
+		gap: 4px;
+		margin-bottom: 6px;
+
+		.components-button {
+			font-size: 12px;
+			padding: 2px 10px;
+			min-height: 28px;
+		}
+	}
+
+	.dtb-markdown-textarea {
+		width: 100%;
+		min-height: 80px;
+		border: 1px solid #ddd;
+		border-radius: 3px;
+		padding: 10px 12px;
+		font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+			monospace;
+		font-size: 13px;
+		line-height: 1.5;
+		color: #333;
+		background: #fff;
+		resize: vertical;
+		outline: none;
+		tab-size: 4;
+
+		&:focus {
+			border-color: #007cba;
+			box-shadow: 0 0 0 1px #007cba;
 		}
 
-		.block-editor-block-list__layout {
-			> .wp-block {
-				margin-top: 0;
-				margin-bottom: 0.4em;
+		&::placeholder {
+			color: #aaa;
+			font-family: inherit;
+		}
+	}
 
-				&:last-child {
-					margin-bottom: 0;
-				}
+	.dtb-markdown-preview {
+		border: 1px solid #e8e8e8;
+		border-radius: 3px;
+		padding: 10px 12px;
+		min-height: 60px;
+		background: #fafafa;
+		font-size: 14px;
+		line-height: 1.6;
+
+		p {
+			margin: 0 0 0.5em;
+
+			&:last-child {
+				margin-bottom: 0;
 			}
+		}
+
+		ul,
+		ol {
+			margin: 0.3em 0;
+			padding-left: 1.4em;
+		}
+
+		li {
+			margin-bottom: 0.2em;
+		}
+
+		code {
+			background: #eee;
+			padding: 0.1em 0.35em;
+			border-radius: 3px;
+			font-size: 0.9em;
+		}
+
+		pre {
+			background: #eee;
+			padding: 0.6em 0.8em;
+			border-radius: 3px;
+			overflow-x: auto;
+
+			code {
+				background: none;
+				padding: 0;
+			}
+		}
+
+		blockquote {
+			margin: 0.3em 0;
+			padding-left: 0.8em;
+			border-left: 3px solid #ddd;
+			color: #666;
 		}
 	}
 
