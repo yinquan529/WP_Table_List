@@ -36,11 +36,11 @@
 	.docs-table-cell--content {
 		display: table-cell;
 		vertical-align: top;
-		overflow: hidden;
 	}
 
 	/* Markdown editor */
 	.dtb-markdown-editor {
+		display: block;
 		width: 100%;
 		min-width: 0;
 		box-sizing: border-box;
@@ -59,9 +59,11 @@
 	}
 
 	.dtb-markdown-textarea {
-		width: 100%;
+		display: block;
+		width: 100% !important;
 		min-width: 0;
 		min-height: 80px;
+		max-width: 100%;
 		box-sizing: border-box;
 		border: 1px solid #ddd;
 		border-radius: 3px;
