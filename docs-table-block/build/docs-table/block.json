@@ -24,7 +24,7 @@
   "attributes": {
     "headerLeft": {
       "type": "string",
-      "default": "Object"
+      "default": "object"
     },
     "headerRight": {
       "type": "string",
@@ -40,7 +40,7 @@
     },
     "borderColor": {
       "type": "string",
-      "default": "#e0e0e0"
+      "default": "#ccc"
     },
     "borderStyle": {
       "type": "string",
