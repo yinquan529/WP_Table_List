@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "docs-table/row",
+  "version": "1.0.0",
+  "title": "Docs Table Row",
+  "category": "text",
+  "icon": "table-row-after",
+  "description": "A single row in a documentation table.",
+  "parent": [
+    "docs-table/table"
+  ],
+  "supports": {
+    "html": false,
+    "reusable": false
+  },
+  "attributes": {
+    "label": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "textdomain": "docs-table-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}
