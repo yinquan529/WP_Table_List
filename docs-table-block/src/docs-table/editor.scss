@@ -1,0 +1,13 @@
+/* Editor-only styles for the docs-table parent block */
+.wp-block-docs-table-table {
+	/* Make the table block appender less intrusive */
+	.block-list-appender {
+		margin: 0;
+
+		.block-editor-inserter {
+			display: flex;
+			justify-content: center;
+			padding: 8px 0;
+		}
+	}
+}
