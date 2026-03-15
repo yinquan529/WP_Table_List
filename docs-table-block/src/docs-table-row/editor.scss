@@ -1,13 +1,9 @@
 /* Editor-only styles for docs-table-row */
 .wp-block-docs-table-row {
-	/* Two-column grid matching the parent's column widths */
-	display: grid !important;
-	grid-template-columns: var(--dtb-left-width, 25%) 1fr;
-	align-items: start;
-
 	/* Label input */
 	.docs-table-cell--label {
 		min-width: 0;
+		overflow: hidden;
 	}
 
 	.dtb-label-input {
@@ -37,6 +33,7 @@
 	/* Content cell */
 	.docs-table-cell--content {
 		min-width: 0;
+		overflow: hidden;
 	}
 
 	/* Markdown editor */

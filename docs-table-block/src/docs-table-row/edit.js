@@ -9,12 +9,18 @@ marked.setOptions( {
 	gfm: true,
 } );
 
-export default function Edit( { attributes, setAttributes } ) {
+export default function Edit( { attributes, setAttributes, context } ) {
 	const { label, content, contentHtml } = attributes;
+	const leftColumnWidth = context[ 'docs-table/leftColumnWidth' ] ?? 25;
 	const [ isPreview, setIsPreview ] = useState( false );
 
 	const blockProps = useBlockProps( {
 		className: 'docs-table-row',
+		style: {
+			display: 'grid',
+			gridTemplateColumns: `${ leftColumnWidth }% 1fr`,
+			alignItems: 'start',
+		},
 	} );
 
 	const handleContentChange = useCallback(
