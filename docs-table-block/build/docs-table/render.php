@@ -25,9 +25,9 @@ $right_font_size   = intval( $attributes['rightFontSize'] ?? 16 );
 $left_ff_css  = ( ! $left_font_family || 'System Default' === $left_font_family ) ? 'inherit' : esc_attr( $left_font_family );
 $right_ff_css = ( ! $right_font_family || 'System Default' === $right_font_family ) ? 'inherit' : esc_attr( $right_font_family );
 
-// Load Google Fonts if needed.
-if ( function_exists( 'docs_table_block_enqueue_google_fonts' ) ) {
-	docs_table_block_enqueue_google_fonts( $left_font_family, $right_font_family );
+// Load self-hosted web fonts if needed.
+if ( function_exists( 'docs_table_block_enqueue_fonts' ) ) {
+	docs_table_block_enqueue_fonts( $left_font_family, $right_font_family );
 }
 
 $classes = 'docs-table-block';
